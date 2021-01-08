@@ -1,0 +1,23 @@
+ruby install from chrome
+then open cmd
+gem install rails --no-document  //rails install command
+ 
+install yarn from chrome 
+install nodejs from chrome
+
+install all in c folder or same location
+rails new appname
+cd appname
+
+rails generate scaffold User name:string password:digest
+
+rake db:migrate
+
+open gemfile In gemfile.. Change: remove # in line #gem bycrypt
+
+open -->appname/app/controller usercontroller.rb:  
+      Change @user to users_url in create and update
+
+
+bundle install
+rails server

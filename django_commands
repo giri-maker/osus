@@ -1,0 +1,120 @@
+python -v
+pip -v
+
+pip not found-> python get-pip.py//pip install command
+pip install virtualenv
+create folder eg:myproject // not a command
+cd myproject
+py -m venv myenvironment
+myenvironment\scripts\activate
+pip install django
+
+django-admin startproject notes
+cd notes
+python manage.py startapp app1
+python manage.py runserver
+
+
+
+Don't close the command prompt 
+
+
+
+
+
+go to myproject folder
+open myproject  folder
+-->open file settings.py
+    settings.py
+           
+           INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',//type , here
+    'app1'// type 'app1' here
+]
+save file
+
+open urls.py
+copy and replace these lines in urls.py and save
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('notes/', include('app1.urls'))
+]
+
+create new file in app1 folder named urls.py
+
+paste below code and save
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.register, name='register'),
+    path('login', views.login, name='login')
+]
+
+open views.py
+paste below code in views.py and save the file
+
+from django.shortcuts import render
+
+# Create your views here.
+
+def register(request):
+    return render(request, 'register.html')
+
+def login(request):
+    return render(request, 'login.html')
+
+create folder with in app name folder called templates
+create file named login.html 
+
+paste below codes in login.html and save the file
+
+<html>
+<title> BLOOD BANK </title>
+<h1>LOGIN</h1>
+<body>
+<form>
+<input type="email" name="email" placeholder="Email" required><br>
+<input type="password" name="password" placeholder="Password" required><br>
+<input type="submit" value="submit"><br><br>
+<button onclick="location.href='{% url 'register' %}'">Register</button>
+
+</form>
+</body>
+</html>
+
+
+create file named register.html 
+paste below code and save file
+
+<html>
+<title> BLOOD BANK </title>
+<h1>REGISTER</h1>
+<body>
+<form>
+Name : <input type="name" name="name" placeholder="Name" required><br>
+Email:<input type="email" name="email" placeholder="Email" required><br>
+Password:<input type="password" name="password" placeholder="Password" required><br>
+Mobile No:<input type="mobno" name="mobno" placeholder="Phone No" required><br>
+Blood type:<input type="blood" name="blood" placeholder="Blood" required><br>
+<input type="submit" value="submit"><br><br>
+go to <button onclick="location.href='{% url 'login' %}'">Login</button>
+</form>
+</body>
+</html>
+
+
+open command prompt if no errors port will be displayed.open port link in chrome
+
+
+    
